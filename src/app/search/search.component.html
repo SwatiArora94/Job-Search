@@ -1,0 +1,22 @@
+<div class="search-container">
+  <div class="header-div">
+    <span>Search Jobs</span>
+  </div>
+  <div class="components-div">
+    <div class="select">
+      <label>Experience : </label>
+      <select name="experience" (change)="onExperienceChange($event.target)">
+        <option *ngFor="let option of experienceOptions" [value]="option.value">{{option.label}}</option>
+      </select>
+    </div>
+    <div class="select">
+      <label>Location : </label>
+      <select name="location" (change)="onLocationChange($event.target)">
+        <option *ngFor="let option of locationOptions" [value]="option.value">{{option.label}}</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Search" (click)="onSearchClick()">
+    </div>
+  </div>
+</div>

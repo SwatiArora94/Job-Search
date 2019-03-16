@@ -1,0 +1,42 @@
+<div class="result-container">
+  <div class="header-div">
+    <span>Jobs Listing</span>
+  </div>
+  <div class="content-component-div">
+    <div class="components-div">
+      <div class="button">
+        <button (click)="sortJobs(SORT_BY_LOCATION,true)" [ngClass]="{'selected-sort':sortedBy==SORT_BY_LOCATION}">Sort
+          By
+          Location</button>
+      </div>
+      <div class="button">
+        <button (click)="sortJobs(SORT_BY_EXPERIENCE,true)"
+          [ngClass]="{'selected-sort':sortedBy==SORT_BY_EXPERIENCE}">Sort
+          By
+          Exp</button>
+      </div>
+    </div>
+    <div class="components-div component-result-div">
+      <div>
+        <input type="search" [placeholder]="'Keyword or skills'" #input (keyup)="filterJobs($event.target.value)">
+      </div>
+      <div *ngIf="!noJobData" class="results-div">
+        <div *ngFor="let result of displayJobResults" class="result-div">
+          <span *ngIf="result?.title?.length">Title : {{result?.title}}</span>
+          <span *ngIf="result?.companyname?.length">Company : {{result?.companyname}}</span>
+          <span *ngIf="result?.location?.length">Location : {{result?.location}}</span>
+          <span *ngIf="result?.salary?.length">Salary : {{result?.salary}}</span>
+          <span *ngIf="result?.experience?.length">Experience : {{result?.experience}}</span>
+          <span *ngIf="result?.type?.length">Type : {{result?.type}}</span>
+          <span *ngIf="result?.startdate">Start Date : {{result?.startdate}}</span>
+          <span *ngIf="result?.enddate">End Date : {{result?.enddate}}</span>
+          <span *ngIf="result?.applylink?.length">Apply Link : {{result?.applylink}}</span>
+          <span *ngIf="result?.source?.length">Source : {{result?.source}}</span>
+        </div>
+      </div>
+      <div *ngIf="noJobData" class="no-data-container">
+        <span>No Job Openings Found</span>
+      </div>
+    </div>
+  </div>
+</div>
